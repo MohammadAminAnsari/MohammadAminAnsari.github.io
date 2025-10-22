@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohammad Amin Ansari — Academic Profile</title>
+  <meta name="description" content="Academic homepage of Mohammad Amin Ansari — EEG · Machine Learning · Signal Processing" />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #1f2937; /* slate-800 */
+      --muted: #6b7280; /* gray-500 */
+      --line: #e5e7eb;  /* gray-200 */
+      --accent: #111827; /* gray-900 */
+      --accent-2: #f3f4f6; /* gray-100 */
+      --link: #2563eb; /* blue-600 */
+      --maxw: 980px;
+      --sidebar-w: 280px;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .layout{display:flex; min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      position:sticky; top:0; align-self:flex-start;
+      width:var(--sidebar-w); min-height:100vh; box-sizing:border-box;
+      padding:36px 28px; border-right:1px solid var(--line);
+      background:linear-gradient(180deg, #fff, #fafafa 60%, #fff);
+    }
+    .brand{letter-spacing:.08em}
+    .brand h1{margin:0; font-size:28px; line-height:1.15}
+    .brand .uni{color:var(--muted); font-weight:600; margin-top:4px}
+
+    .nav{margin-top:28px}
+    .nav a{display:block; padding:10px 4px; color:var(--text); border-radius:8px}
+    .nav a:hover{background:var(--accent-2)}
+    .nav a.active{background:var(--accent); color:white}
+
+    .social{display:flex; gap:10px; margin-top:auto; padding-top:24px}
+    .social a{color:inherit}
+
+    /* Mobile header */
+    .mobile-bar{display:none; position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line)}
+    .mobile-bar .row{display:flex; align-items:center; justify-content:space-between; padding:12px 16px}
+    .burger{background:none; border:0; font-size:20px}
+
+    /* Content */
+    .content{flex:1; min-width:0}
+    .wrap{max-width:var(--maxw); padding:40px 48px; margin:0 auto}
+
+    /* Section styles */
+    section{scroll-margin-top:80px;}
+    .section{display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; padding:28px 0; border-bottom:1px solid var(--line)}
+    .section h2{font-size:28px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .lead{font-size:18px; color:var(--text)}
+    .card{border:1px solid var(--line); border-radius:14px; padding:16px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .list{padding-left:18px}
+    img.portrait{width:100%; max-width:520px; border-radius:12px; border:1px solid var(--line)}
+
+    /* Footer */
+    footer{padding:30px 0; color:var(--muted)}
+
+    /* Mobile adjustments */
+    @media (max-width: 980px){
+      :root{ --sidebar-w: 100% }
+      .layout{display:block}
+      .sidebar{display:none}
+      .mobile-bar{display:block}
+      .wrap{padding:24px 18px}
+      .section{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+
+    /* Simple badge buttons */
+    .btn{display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:10px; font-weight:600}
+    .btn:hover{text-decoration:none; filter:brightness(.95)}
+
+    /* Tiny label */
+    .kicker{color:var(--muted); letter-spacing:.2em; font-weight:600; font-size:12px}
+  </style>
+</head>
+<body>
+  <!-- Mobile bar -->
+  <div class="mobile-bar" id="mobileBar">
+    <div class="row">
+      <div><strong>Mohammad Amin Ansari</strong></div>
+      <button class="burger" aria-label="Open menu" id="openMenu">☰</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- Sidebar (desktop) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h1>MOHAMMAD<br/>AMIN ANSARI</h1>
+        <div class="uni">EEG · ML · Signal Processing</div>
+      </div>
+
+      <nav class="nav" id="toc">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="social">
+        <a href="mailto:you@example.com" title="Email" aria-label="Email">✉️</a>
+        <a href="https://scholar.google.com/" title="Google Scholar" aria-label="Google Scholar">🎓</a>
+        <a href="https://www.linkedin.com/" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="/cv.pdf" class="btn" title="Download CV">CV</a>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="content" id="content">
+      <div class="wrap">
+
+        <section id="about" class="section">
+          <div>
+            <div class="kicker">INFORMATION</div>
+            <h2>About Me</h2>
+            <p class="lead">I am a researcher working on EEG signal processing and machine learning. My interests include sleep staging, artifact removal, and clinical AI.</p>
+            <p>Previously at <strong>Some Lab</strong>, I completed my M.Sc. at <strong>Some University</strong>. I enjoy building open-source tools and collaborating with clinicians to translate models into real-world impact.</p>
+            <p>
+              <a class="btn" href="#contact">Contact</a>
+            </p>
+          </div>
+          <div>
+            <img class="portrait" src="/img/portrait.jpg" alt="Portrait of Mohammad Amin Ansari" />
+          </div>
+        </section>
+
+        <section id="news" class="section">
+          <div>
+            <div class="kicker">UPDATES</div>
+            <h2>News</h2>
+          </div>
+          <div class="card">
+            <ul class="list">
+              <li><strong>Oct 2025</strong> — Personal website launched 🎉</li>
+              <li><strong>2024</strong> — Paper on self-supervised sleep staging accepted.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="publications" class="section">
+          <div>
+            <div class="kicker">RESEARCH</div>
+            <h2>Publications</h2>
+          </div>
+          <div class="card">
+            <ol class="list">
+              <li>
+                <strong>Your Paper Title</strong> (2024). <em>Journal</em>.
+                <a href="/papers/your-paper.pdf">PDF</a> ·
+                <a href="https://github.com/USERNAME/REPO">Code</a>
+              </li>
+              <li>
+                <strong>Another Title</strong> (2023). <em>Conference</em>.
+                <a href="#">PDF</a>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="projects" class="section">
+          <div>
+            <div class="kicker">SOFTWARE</div>
+            <h2>Projects</h2>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <h3>EEG Artifact Toolkit</h3>
+              <p>Robust artifact removal for clinical EEG pipelines.</p>
+              <p><a href="https://github.com/USERNAME/REPO">Repository</a></p>
+            </div>
+            <div class="card">
+              <h3>Sleep Staging Models</h3>
+              <p>Lightweight deep learning models for polysomnography.</p>
+              <p><a href="https://github.com/USERNAME/REPO2">Repository</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="teaching" class="section">
+          <div>
+            <div class="kicker">ACADEMIA</div>
+            <h2>Teaching</h2>
+          </div>
+          <div class="card">
+            <ul class="list">
+              <li>ML for Biomedical Engineering (2024–)</li>
+              <li>Intro to Python (2022–)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="contact" class="section">
+          <div>
+            <div class="kicker">GET IN TOUCH</div>
+            <h2>Contact</h2>
+          </div>
+          <div class="card">
+            <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+            <p>Google Scholar · ORCID · LinkedIn</p>
+          </div>
+        </section>
+
+        <footer>
+          <div class="muted">© <span id="year"></span> Mohammad Amin Ansari</div>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smoothly highlight active section in the sidebar
+    const links = Array.from(document.querySelectorAll('#toc a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    };
+
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries){
+        if(e.isIntersecting){ setActive(e.target.id); }
+      }
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+
+    // Mobile menu toggle: show sidebar as an overlay
+    const openBtn = document.getElementById('openMenu');
+    const sidebar = document.getElementById('sidebar');
+    const mobileBar = document.getElementById('mobileBar');
+
+    const showOverlay = () => {
+      if (getComputedStyle(mobileBar).display === 'none') return;
+      sidebar.style.display = 'block';
+      sidebar.style.position = 'fixed';
+      sidebar.style.zIndex = '50';
+      sidebar.style.height = '100vh';
+      sidebar.style.left = '0';
+      sidebar.style.top = '0';
+      sidebar.style.background = '#fff';
+      sidebar.style.boxShadow = '0 10px 30px rgba(0,0,0,.08)';
+      document.body.style.overflow = 'hidden';
+    };
+    const hideOverlay = () => {
+      if (getComputedStyle(mobileBar).display === 'none') return;
+      sidebar.removeAttribute('style');
+      document.body.style.overflow = '';
+    };
+
+    openBtn && openBtn.addEventListener('click', showOverlay);
+    sidebar && sidebar.addEventListener('click', (e)=>{
+      if(e.target.tagName === 'A') hideOverlay();
+    });
+
+    // Close overlay if viewport grows
+    window.addEventListener('resize', hideOverlay);
+  </script>
+</body>
+</html>
