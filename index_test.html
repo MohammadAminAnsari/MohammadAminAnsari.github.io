@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohammad Amin Ansari — Academic Profile</title>
+  <meta name="description" content="Academic homepage of Mohammad Amin Ansari — Machine Learning · Deep Learning · Generative AI" />
+  <!-- Favicon (change to your own if needed) -->
+  <link rel="icon" href="/student.ico">
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #1f2937; /* slate-800 */
+      --muted: #6b7280; /* gray-500 */
+      --line: #e5e7eb;  /* gray-200 */
+      --accent: #111827; /* gray-900 */
+      --accent-2: #f3f4f6; /* gray-100 */
+      --link: #2563eb; /* blue-600 */
+      --maxw: 980px;
+      --sidebar-w: 280px;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .layout{display:flex; min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      position:sticky; top:0; align-self:flex-start;
+      width:var(--sidebar-w); min-height:100vh; box-sizing:border-box;
+      padding:36px 28px; border-right:1px solid var(--line);
+      background:linear-gradient(180deg, #fff, #fafafa 60%, #fff);
+    }
+    .brand{letter-spacing:.08em}
+    .brand h1{margin:0; font-size:28px; line-height:1.15}
+    .brand .uni{color:var(--muted); font-weight:600; margin-top:4px}
+
+    .nav{margin-top:28px}
+    .nav a{display:block; padding:10px 4px; color:var(--text); border-radius:8px}
+    .nav a:hover{background:var(--accent-2)}
+    .nav a.active{background:var(--accent); color:white}
+
+    .social{display:flex; gap:10px; margin-top:auto; padding-top:24px}
+    .social a{color:inherit}
+
+    /* Mobile header */
+    .mobile-bar{display:none; position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line)}
+    .mobile-bar .row{display:flex; align-items:center; justify-content:space-between; padding:12px 16px}
+    .burger{background:none; border:0; font-size:20px}
+
+    /* Content */
+    .content{flex:1; min-width:0}
+    .wrap{max-width:var(--maxw); padding:40px 48px; margin:0 auto}
+
+    /* Section styles */
+    section{scroll-margin-top:80px;}
+    .section{
+      display:grid; grid-template-columns: 1fr 1fr; gap:28px;
+      align-items:start; padding:28px 0; border-bottom:1px solid var(--line)
+    }
+    .section h2{font-size:28px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .lead{font-size:18px; color:var(--text)}
+    .card{border:1px solid var(--line); border-radius:14px; padding:16px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .list{padding-left:18px}
+    img.portrait{width:100%; max-width:520px; border-radius:12px; border:1px solid var(--line)}
+
+    /* Footer */
+    footer{padding:30px 0; color:var(--muted)}
+
+    /* Mobile adjustments */
+    @media (max-width: 980px){
+      :root{ --sidebar-w: 100% }
+      .layout{display:block}
+      .sidebar{display:none}
+      .mobile-bar{display:block}
+      .wrap{padding:24px 18px}
+      .section{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+
+    /* Buttons */
+    .btn{display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:10px; font-weight:600}
+    .btn:hover{text-decoration:none; filter:brightness(.95)}
+
+    /* Tiny label */
+    .kicker{color:var(--muted); letter-spacing:.2em; font-weight:600; font-size:12px}
+
+    /* --- Custom tweaks --- */
+    /* Research section: single column + tight spacing (removes extra void) */
+    #research.section{
+      grid-template-columns: 1fr;
+      padding-top: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line);
+    }
+    #research.section > *{ grid-column: 1 / -1; }
+    #research.section + .section{ padding-top: 8px; }
+    /* Make Research a compact single-column section */
+    #research.section {
+    display: block;                 /* turn off the 2-column grid */
+    padding-top: 10px;              /* tighten top/bottom padding */
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);  /* keep the separator line */
+    }
+    #research.section h2 { margin: 0 0 10px; }  /* small space below heading */
+    #research.section p  { margin: 0; }         /* remove extra paragraph margin */
+
+    /* Keep a small gap before the next section (Projects) */
+    #research.section + .section { padding-top: 12px; }
+
+  </style>
+</head>
+<body>
+  <!-- Mobile bar -->
+  <div class="mobile-bar" id="mobileBar">
+    <div class="row">
+      <div><strong>Mohammad Amin Ansari</strong></div>
+      <button class="burger" aria-label="Open menu" id="openMenu">☰</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- Sidebar (desktop) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h1>MOHAMMAD<br/>AMIN ANSARI</h1>
+        <div class="uni">ML · DL · Generative AI</div>
+      </div>
+
+      <nav class="nav" id="toc">
+        <a href="#about">About</a>
+        <a href="#research">Research Interests</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="social">
+        <a href="mailto:you@example.com" title="Email" aria-label="Email">✉️</a>
+        <a href="https://scholar.google.com/" title="Google Scholar" aria-label="Google Scholar">🎓</a>
+        <a href="https://www.linkedin.com/" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="/cv.pdf" class="btn" title="Download CV">CV</a>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="content" id="content">
+      <div class="wrap">
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+          <div>
+            <div class="kicker">INFORMATION</div>
+            <h2>About Me</h2>
+            <p class="lead">
+              Machine learning researcher focused on deep learning and generative AI, with a strong theoretical and applied background. 
+              My training gives me deep understanding across neuroscience, communication systems, and computer architecture. 
+              I’m a fast learner, adaptable, and thrive in collaborative teams—and I’m currently seeking a PhD research position to contribute to impactful ML research.
+            </p>
+            <p>
+              I'm finishing my B.Sc. this December and have worked in the 
+              <strong>Biomedical Signal Processing Lab</strong> at 
+              <strong>Sharif University of Technology</strong>. 
+              I enjoy building open-source tools and collaborating with domain experts to translate models into real-world impact.
+            </p>
+            <p><a class="btn" href="#contact">Contact</a></p>
+          </div>
+          <div>
+            <img class="portrait" src="/img/portrait.jpg" alt="Portrait of Mohammad Amin Ansari" />
+          </div>
+        </section>
+
+        <!-- RESEARCH -->
+        <section id="research" class="section">
+          <h2>Research Interests</h2>
+          <p>
+            I’m interested in applicable AI—designing and deploying machine learning, deep learning, and generative models
+            that solve real-world problems across domains such as healthcare, communications, and intelligent systems.
+            I enjoy end-to-end work: data curation, representation learning, model building, and efficient implementation,
+            with an eye on robustness, interpretability, and impact. Drawing on foundations that span neuroscience,
+            communication systems, and computer architecture, I’m eager to begin a PhD and develop practical AI methods
+            that translate from ideas to usable solutions.
+          </p>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+          <div>
+            <div class="kicker">RECENT</div>
+            <h2>Projects</h2>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <h3>Generative Models for Biomedical Signals</h3>
+              <p>Trained and evaluated deep generative architectures for realistic data synthesis and augmentation; improved downstream classifiers under data scarcity.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_GEN">Repository</a></p>
+            </div>
+            <div class="card">
+              <h3>Sleep Staging with Deep Learning</h3>
+              <p>End-to-end pipeline from preprocessing to deployment; benchmarking representation learning and transfer learning setups.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_SLEEP">Repository</a></p>
+            </div>
+            <div class="card">
+              <h3>FPGA-Accelerated Signal Processing</h3>
+              <p>Designed hardware-aware DSP kernels and data paths; compared CPU/GPU/FPGA trade-offs for throughput and latency.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_FPGA">Repository</a></p>
+            </div>
+            <div class="card">
+              <h3>OCR Pipeline (Multi-language)</h3>
+              <p>Hybrid classical + deep learning OCR with document cleanup, segmentation, and sequence modeling for practical deployment.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_OCR">Repository</a></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TEACHING -->
+        <section id="teaching" class="section">
+          <div>
+            <div class="kicker">ACADEMIA</div>
+            <h2>Teaching</h2>
+          </div>
+          <div class="card">
+            <ul class="list">
+              <li>ML for Biomedical Engineering (TA)</li>
+              <li>Intro to Python (TA)</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+          <div>
+            <div class="kicker">GET IN TOUCH</div>
+            <h2>Contact</h2>
+          </div>
+          <div class="card">
+            <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+            <p>Google Scholar · ORCID · LinkedIn</p>
+          </div>
+        </section>
+
+        <footer>
+          <div class="muted">© <span id="year"></span> Mohammad Amin Ansari</div>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smoothly highlight active section in the sidebar
+    // --- Scroll spy (robust IO version) ---
+    const links = Array.from(document.querySelectorAll('#toc a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const setActive = (id) => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+
+    const visible = new Map();
+    const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        visible.set(e.target.id, e.intersectionRatio);
+    });
+    // pick the section with highest visibility
+    let bestId = sections[0].id, bestRatio = -1;
+    visible.forEach((ratio, id) => { if (ratio > bestRatio) { bestRatio = ratio; bestId = id; } });
+    setActive(bestId);
+    }, {
+    threshold: [0, 0.25, 0.5, 0.75, 1],      // smoother steps
+    rootMargin: '-10% 0px -45% 0px'         // waits until a section is more centered
+    });
+
+    sections.forEach(sec => io.observe(sec));
+
+    // Mobile menu toggle: show sidebar as an overlay
+    const openBtn = document.getElementById('openMenu');
+    const sidebar = document.getElementById('sidebar');
+    const mobileBar = document.getElementById('mobileBar');
+
+    const showOverlay = () => {
+      if (getComputedStyle(mobileBar).display === 'none') return;
+      sidebar.style.display = 'block';
+      sidebar.style.position = 'fixed';
+      sidebar.style.zIndex = '50';
+      sidebar.style.height = '100vh';
+      sidebar.style.left = '0';
+      sidebar.style.top = '0';
+      sidebar.style.background = '#fff';
+      sidebar.style.boxShadow = '0 10px 30px rgba(0,0,0,.08)';
+      document.body.style.overflow = 'hidden';
+    };
+    const hideOverlay = () => {
+      if (getComputedStyle(mobileBar).display === 'none') return;
+      sidebar.removeAttribute('style');
+      document.body.style.overflow = '';
+    };
+
+    openBtn && openBtn.addEventListener('click', showOverlay);
+    sidebar && sidebar.addEventListener('click', (e)=>{
+      if(e.target.tagName === 'A') hideOverlay();
+    });
+
+    // Close overlay if viewport grows
+    window.addEventListener('resize', hideOverlay);
+
+    
+  </script>
+</body>
+</html>

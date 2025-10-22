@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mohammad Amin Ansari — Academic Profile</title>
-  <meta name="description" content="Academic homepage of Mohammad Amin Ansari — Machine Learning · Deep Learning · Generative AI" />
-  <!-- Favicon (change to your own if needed) -->
-  <link rel="icon" href="/student.ico">
+  <meta name="description" content="Academic homepage of Mohammad Amin Ansari" />
+  <link rel="icon" href="/student.ico" />
 
+  <!--  -------------------------------------------------------------------------------  -->
   <style>
     :root{
       --bg: #ffffff;
@@ -60,10 +60,9 @@
 
     /* Section styles */
     section{scroll-margin-top:80px;}
-    .section{
-      display:grid; grid-template-columns: 1fr 1fr; gap:28px;
-      align-items:start; padding:28px 0; border-bottom:1px solid var(--line)
-    }
+    .section{ display:block; padding:28px 0; border-bottom:1px solid var(--line) }
+    /* Only specific sections go two-column */
+    #about.section{ display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start }
     .section h2{font-size:28px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 12px}
     .muted{color:var(--muted)}
     .lead{font-size:18px; color:var(--text)}
@@ -77,34 +76,84 @@
 
     /* Mobile adjustments */
     @media (max-width: 980px){
-      :root{ --sidebar-w: 100% }
-      .layout{display:block}
-      .sidebar{display:none}
-      .mobile-bar{display:block}
-      .wrap{padding:24px 18px}
-      .section{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-    }
+  :root{ --sidebar-w: 100% }
+  .layout{display:block}
+  .sidebar{display:none}
+  .mobile-bar{display:block}
+  .wrap{padding:24px 18px}
+  /* Collapse two-column sections on mobile */
+  #about.section{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+}
 
-    /* Buttons */
+    /* Simple badge buttons */
     .btn{display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:10px; font-weight:600}
     .btn:hover{text-decoration:none; filter:brightness(.95)}
 
     /* Tiny label */
     .kicker{color:var(--muted); letter-spacing:.2em; font-weight:600; font-size:12px}
+  
+    /* Horizontal project scroller */
+    .hscroll{display:flex; gap:16px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x mandatory;}
+    .hscroll::-webkit-scrollbar{height:8px}
+    .hscroll::-webkit-scrollbar-thumb{background:#d1d5db; border-radius:8px}
+    .project{min-width:360px; scroll-snap-align:start}
+    @media (max-width: 980px){ .project{min-width: 85vw} }
 
-    /* --- Custom tweaks --- */
-    /* Research section: single column + tight spacing (removes extra void) */
-    #research.section{
-      grid-template-columns: 1fr;
-      padding-top: 8px;
-      padding-bottom: 4px;
-      border-bottom: none;
+    /* Teaching list: left text + right-aligned dates */
+    #teaching .teach-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
     }
-    #research.section > *{ grid-column: 1 / -1; }
-    #research.section + .section{ padding-top: 8px; }
+    #teaching .teach-item{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 14px 20px;
+    padding: 6px 0;
+    position: relative;
+    padding-left: 20px;
+    }
+    #teaching .teach-item::before{
+    content: "";
+    position: absolute;
+    left: 0;            /* inside the card, not hugging the border */
+    top: 1.1em;         /* aligns with the first line of text */
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text);   /* or var(--muted) for a softer dot */
+    }
+    #teaching .left{ /* course/title/instructors */
+    min-width: 0;
+    }
+    #teaching .right{ /* dates */
+    white-space: nowrap;
+    color: var(--muted);
+    font-style: italic;
+    }
+
+    /* Mobile: stack dates under the line */
+    @media (max-width: 640px){
+    #teaching .teach-item{
+        grid-template-columns: 1fr;
+        padding-left: 0;
+    }
+    #teaching .teach-item::before{ left: -14px; }
+    #teaching .right{ white-space: normal; }
+    }
+
+    /* put this in your <style> */
+    .icon-link svg{ display:block; fill: currentColor; }
+    .social a.icon-link{ line: height 0px; }      /* tighter vertical alignment */
+    .social a.icon-link:hover{ opacity:.6 }   /* subtle hover */
+
   </style>
 </head>
+
+
+<!----------------------------------------------------------------------------------->
 <body>
   <!-- Mobile bar -->
   <div class="mobile-bar" id="mobileBar">
@@ -119,22 +168,34 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <h1>MOHAMMAD<br/>AMIN ANSARI</h1>
-        <div class="uni">ML · DL · Generative AI</div>
+        <div class="uni">ML · DL · GenAI · Signal Processing</div>
       </div>
 
       <nav class="nav" id="toc">
         <a href="#about">About</a>
-        <a href="#research">Research Interests</a>
+
+        <!-- 
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        -->
+        
         <a href="#projects">Projects</a>
-        <a href="#teaching">Teaching</a>
+        <a href="#teaching">TA Experience</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="social">
-        <a href="mailto:you@example.com" title="Email" aria-label="Email">✉️</a>
-        <a href="https://scholar.google.com/" title="Google Scholar" aria-label="Google Scholar">🎓</a>
-        <a href="https://www.linkedin.com/" title="LinkedIn" aria-label="LinkedIn">in</a>
-        <a href="/cv.pdf" class="btn" title="Download CV">CV</a>
+        <a href="mailto:amin.ansari13@sharif.edu" title="Email" aria-label="Email">✉️</a>
+        <a href="https://www.linkedin.com/in/mohammad-amin-ansari-1b113a207"
+   aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener" class="icon-link">
+  <!-- LinkedIn logo -->
+  <svg viewBox="0 0 30 30" width="20" height="30" aria-hidden="true">
+    <path fill="currentColor"
+      d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm7 0h3.84v1.64h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.64 4.76 6.08V21h-4v-5.15c0-1.23-.02-2.81-1.71-2.81-1.71 0-1.97 1.34-1.97 2.72V21h-4V9Z"/>
+  </svg>
+</a>
+
+        <a href="/cv.pdf" title="Download CV">CV</a>
       </div>
     </aside>
 
@@ -142,95 +203,168 @@
     <main class="content" id="content">
       <div class="wrap">
 
-        <!-- ABOUT -->
         <section id="about" class="section">
           <div>
             <div class="kicker">INFORMATION</div>
             <h2>About Me</h2>
-            <p class="lead">
-              Machine learning researcher focused on deep learning and generative AI, with a strong theoretical and applied background. 
+            <p class="lead">Machine learning researcher focused on deep learning and generative AI, with a strong theoretical and applied background. 
               My training gives me deep understanding across neuroscience, communication systems, and computer architecture. 
-              I’m a fast learner, adaptable, and thrive in collaborative teams—and I’m currently seeking a PhD research position to contribute to impactful ML research.
-            </p>
-            <p>
-              I'm finishing my B.Sc. this December and have worked in the 
+              I’m a fast learner, adaptable, and thrive in collaborative teams—and I’m currently seeking a PhD research position to contribute to impactful ML research.</p>
+            <p>I'm finishing my B.Sc. this December and have worked in the 
               <strong>Biomedical Signal Processing Lab</strong> at 
               <strong>Sharif University of Technology</strong>. 
-              I enjoy building open-source tools and collaborating with domain experts to translate models into real-world impact.
+              I enjoy building open-source tools and collaborating with domain experts to translate models into real-world impact.</p>
+            <p>
+              <a class="btn" href="#contact">Contact</a>
             </p>
-            <p><a class="btn" href="#contact">Contact</a></p>
           </div>
           <div>
             <img class="portrait" src="/img/portrait.jpg" alt="Portrait of Mohammad Amin Ansari" />
           </div>
         </section>
-
-        <!-- RESEARCH -->
-        <section id="research" class="section">
-          <h2>Research Interests</h2>
-          <p>
-            I’m interested in applicable AI—designing and deploying machine learning, deep learning, and generative models
-            that solve real-world problems across domains such as healthcare, communications, and intelligent systems.
-            I enjoy end-to-end work: data curation, representation learning, model building, and efficient implementation,
-            with an eye on robustness, interpretability, and impact. Drawing on foundations that span neuroscience,
-            communication systems, and computer architecture, I’m eager to begin a PhD and develop practical AI methods
-            that translate from ideas to usable solutions.
-          </p>
-        </section>
-
-        <!-- PROJECTS -->
-        <section id="projects" class="section">
+    
+    <!-- 
+    <section id="news" class="section">
           <div>
-            <div class="kicker">RECENT</div>
-            <h2>Projects</h2>
-          </div>
-          <div class="grid-2">
-            <div class="card">
-              <h3>Generative Models for Biomedical Signals</h3>
-              <p>Trained and evaluated deep generative architectures for realistic data synthesis and augmentation; improved downstream classifiers under data scarcity.</p>
-              <p><a href="https://github.com/USERNAME/PROJECT_GEN">Repository</a></p>
-            </div>
-            <div class="card">
-              <h3>Sleep Staging with Deep Learning</h3>
-              <p>End-to-end pipeline from preprocessing to deployment; benchmarking representation learning and transfer learning setups.</p>
-              <p><a href="https://github.com/USERNAME/PROJECT_SLEEP">Repository</a></p>
-            </div>
-            <div class="card">
-              <h3>FPGA-Accelerated Signal Processing</h3>
-              <p>Designed hardware-aware DSP kernels and data paths; compared CPU/GPU/FPGA trade-offs for throughput and latency.</p>
-              <p><a href="https://github.com/USERNAME/PROJECT_FPGA">Repository</a></p>
-            </div>
-            <div class="card">
-              <h3>OCR Pipeline (Multi-language)</h3>
-              <p>Hybrid classical + deep learning OCR with document cleanup, segmentation, and sequence modeling for practical deployment.</p>
-              <p><a href="https://github.com/USERNAME/PROJECT_OCR">Repository</a></p>
-            </div>
-          </div>
-        </section>
-
-        <!-- TEACHING -->
-        <section id="teaching" class="section">
-          <div>
-            <div class="kicker">ACADEMIA</div>
-            <h2>Teaching</h2>
+            <div class="kicker">UPDATES</div>
+            <h2>News</h2>
           </div>
           <div class="card">
             <ul class="list">
-              <li>ML for Biomedical Engineering (TA)</li>
-              <li>Intro to Python (TA)</li>
+              <li><strong>Oct 2025</strong> — Personal website launched 🎉</li>
+              <li><strong>2024</strong> — Paper on self-supervised sleep staging accepted.</li>
             </ul>
           </div>
         </section>
 
-        <!-- CONTACT -->
+        <section id="publications" class="section">
+          <div>
+            <div class="kicker">RESEARCH</div>
+            <h2>Publications</h2>
+          </div>
+          <div class="card">
+            <ol class="list">
+              <li>
+                <strong>Your Paper Title</strong> (2024). <em>Journal</em>.
+                <a href="/papers/your-paper.pdf">PDF</a> ·
+                <a href="https://github.com/USERNAME/REPO">Code</a>
+              </li>
+              <li>
+                <strong>Another Title</strong> (2023). <em>Conference</em>.
+                <a href="#">PDF</a>
+              </li>
+            </ol>
+          </div>
+        </section>    
+    -->
+        
+
+        <section id="projects" class="section">
+  <div>
+    <div class="kicker">RECENT</div>
+    <h2>Projects</h2>
+  </div>
+  <div class="hscroll">
+    <article class="card project">
+      <h3>Spatial Super-Resolution of EEG with Deep Generative Models</h3>
+      <p><em>2025–present · Supervised by Prof. M. B. Shamsollahi</em></p>
+      <p>Built and compared state-of-the-art generative models to enhance spatial resolution; evaluated reconstruction quality and compute efficiency for MI/BCI and diagnosis tasks.</p>
+    </article>
+
+    <article class="card project">
+      <h3>From Cross-Task to Cross-Subject EEG Decoding</h3>
+      <p><em>2025–present · Supervised by Prof. M. B. Shamsollahi</em></p>
+      <p>Deep/transfer learning to generalize across tasks and subjects; prediction of active-task performance from passive-task EEG; subject‑invariant representations. Part of EEG Foundation Challenge (NeurIPS 2025 Competition Track).</p>
+    </article>
+
+    <article class="card project">
+      <h3>Big Data Classification Engine with AdaBoost</h3>
+      <p><em>2024</em></p>
+      <p>Scalable AdaBoost‑based classifier for large datasets; hands‑on work in adaptive learning and ensembles (Machine Learning course).</p>
+    </article>
+
+    <article class="card project">
+      <h3>Network Switch DoS Vulnerability Analysis</h3>
+      <p><em>2024</em></p>
+      <p>Automated Python platform to simulate Layer‑2 DoS attacks; uncovered security and performance issues that guided product fixes.</p>
+    </article>
+
+    <article class="card project">
+      <h3>Text Recognition Engine (OCR)</h3>
+      <p><em>2023</em></p>
+      <p>Machine‑learning OCR with preprocessing, segmentation, and sequence modeling in MATLAB (Signals & Systems course).</p>
+    </article>
+  </div>
+</section>
+
+        <section id="teaching" class="section">
+  <div>
+    <div class="kicker">ACADEMIA</div>
+    <h2>Teaching Assistant Experience</h2>
+  </div>
+  <div class="card">
+    <ul class="teach-list">
+      <li class="teach-item">
+        <div class="left"><strong>Head TA — Signals &amp; Systems</strong> <span class="muted">(Instructor: Dr. H. Behroozi)</span></div>
+        <div class="right">2024-Fall, 2025-Spring, 2025-Fall</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>Head TA — Communication Systems</strong> <span class="muted">(Instructor: Dr. H. Behroozi)</span></div>
+        <div class="right">2025-Spring, 2025-Fall</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>Lab Head TA — Computer Architecture</strong> <span class="muted">(Instructor: Dr. S. Bagheri Shouraki)</span></div>
+        <div class="right">2025-Spring</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>Lab &amp; Project TA — Computer Architecture</strong> <span class="muted">(Instructor: Dr. S. Bagheri Shouraki)</span></div>
+        <div class="right">2024-Fall</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>TA — Machine Learning</strong> <span class="muted">(Instructor: Dr. M. B. Shamsollahi)</span></div>
+        <div class="right">2025-Spring</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>TA — Electromagnetics</strong> <span class="muted">(Instructors: Prof. A. Banaei, Dr. M. Akbari)</span></div>
+        <div class="right">2024, 2025</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>TA — Signals &amp; Systems</strong> <span class="muted">(Instructor: Dr. M. M. Mojahediyan)</span></div>
+        <div class="right">2024-Fall</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>TA — Probability and Statistics</strong> <span class="muted">(Instructor: Dr. M. M. Mojahediyan)</span></div>
+        <div class="right">2023-Fall</div>
+      </li>
+
+      <li class="teach-item">
+        <div class="left"><strong>TA — Engineering Mathematics</strong> <span class="muted">(Instructor: Dr. D. Pooreh)</span></div>
+        <div class="right">2023-Fall</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
         <section id="contact" class="section">
           <div>
             <div class="kicker">GET IN TOUCH</div>
             <h2>Contact</h2>
           </div>
           <div class="card">
-            <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-            <p>Google Scholar · ORCID · LinkedIn</p>
+            <p>Email: <a href="mailto:amin.ansari13@sharif.edu">amin.ansari13@sharif.edu</a></p>
+            <!-- If you want it to open in a new tab -->
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/mohammad-amin-ansari-1b113a207" target="_blank" rel="noopener">
+            linkedin.com/in/mohammad-amin-ansari-1b113a207
+            </a></p>
           </div>
         </section>
 
