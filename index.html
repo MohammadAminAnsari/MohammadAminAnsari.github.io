@@ -80,10 +80,7 @@
       .section{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
     }
-    <style>
-      #research.section { grid-template-columns: 1fr; }
-      #research.section > * { grid-column: 1 / -1; } /* make children span full width */
-    </style>
+   
 
     /* Simple badge buttons */
     .btn{display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:10px; font-weight:600}
@@ -92,6 +89,10 @@
     /* Tiny label */
     .kicker{color:var(--muted); letter-spacing:.2em; font-weight:600; font-size:12px}
   </style>
+   <style>
+      #research.section { grid-template-columns: 1fr; }
+      #research.section > * { grid-column: 1 / -1; } /* make children span full width */
+    </style>
 </head>
 <body>
   <!-- Mobile bar -->
