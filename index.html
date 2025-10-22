@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="icon" href="/student.ico">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mohammad Amin Ansari — Academic Profile</title>
-  <meta name="description" content="Academic homepage of Mohammad Amin Ansari — Machine Learning · Signal Processing, Deep Learning, GenAI" />
+  <meta name="description" content="Academic homepage of Mohammad Amin Ansari — Machine Learning · Deep Learning · Generative AI" />
+  <!-- Favicon (change to your own if needed) -->
+  <link rel="icon" href="/student.ico">
+
   <style>
     :root{
       --bg: #ffffff;
@@ -58,7 +60,10 @@
 
     /* Section styles */
     section{scroll-margin-top:80px;}
-    .section{display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; padding:28px 0; border-bottom:1px solid var(--line)}
+    .section{
+      display:grid; grid-template-columns: 1fr 1fr; gap:28px;
+      align-items:start; padding:28px 0; border-bottom:1px solid var(--line)
+    }
     .section h2{font-size:28px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 12px}
     .muted{color:var(--muted)}
     .lead{font-size:18px; color:var(--text)}
@@ -80,20 +85,25 @@
       .section{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
     }
-   
 
-    /* Simple badge buttons */
+    /* Buttons */
     .btn{display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:10px; font-weight:600}
     .btn:hover{text-decoration:none; filter:brightness(.95)}
 
     /* Tiny label */
     .kicker{color:var(--muted); letter-spacing:.2em; font-weight:600; font-size:12px}
+
+    /* --- Custom tweaks --- */
+    /* Research section: single column + tight spacing (removes extra void) */
+    #research.section{
+      grid-template-columns: 1fr;
+      padding-top: 8px;
+      padding-bottom: 4px;
+      border-bottom: none;
+    }
+    #research.section > *{ grid-column: 1 / -1; }
+    #research.section + .section{ padding-top: 8px; }
   </style>
-   <style>
-      #research.section { grid-template-columns: 1fr; }
-      #research.section > * { grid-column: 1 / -1; } /* make children span full width */
-      #research.section { padding-bottom: 8px; border-bottom: none; }
-    </style>
 </head>
 <body>
   <!-- Mobile bar -->
@@ -109,15 +119,14 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <h1>MOHAMMAD<br/>AMIN ANSARI</h1>
-        <div class="uni">ML · DL · Signal Processing · GenAI</div>
+        <div class="uni">ML · DL · Generative AI</div>
       </div>
 
       <nav class="nav" id="toc">
         <a href="#about">About</a>
         <a href="#research">Research Interests</a>
-        <!--a href="#publications">Achievements</a-->
         <a href="#projects">Projects</a>
-        <a href="#teaching">Teaching Assistant Experience</a>
+        <a href="#teaching">Teaching</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -133,45 +142,43 @@
     <main class="content" id="content">
       <div class="wrap">
 
+        <!-- ABOUT -->
         <section id="about" class="section">
           <div>
             <div class="kicker">INFORMATION</div>
             <h2>About Me</h2>
-            <p class="lead">Machine learning researcher focused on deep learning and generative AI, with a strong theoretical and applied background. My training gives me deep understanding across neuroscience, communication systems, and computer architecture, and I’ve delivered end-to-end projects from modeling to efficient implementation. I’m a fast learner, adaptable, and thrive in collaborative teams. I’m currently seeking a PhD research position to contribute to impactful ML research.</p>
-            <p>
-              <a class="btn" href="#contact">Contact</a>
+            <p class="lead">
+              Machine learning researcher focused on deep learning and generative AI, with a strong theoretical and applied background. 
+              My training gives me deep understanding across neuroscience, communication systems, and computer architecture. 
+              I’m a fast learner, adaptable, and thrive in collaborative teams—and I’m currently seeking a PhD research position to contribute to impactful ML research.
             </p>
+            <p>
+              I'm finishing my B.Sc. this December and have worked in the 
+              <strong>Biomedical Signal Processing Lab</strong> at 
+              <strong>Sharif University of Technology</strong>. 
+              I enjoy building open-source tools and collaborating with domain experts to translate models into real-world impact.
+            </p>
+            <p><a class="btn" href="#contact">Contact</a></p>
           </div>
           <div>
             <img class="portrait" src="/img/portrait.jpg" alt="Portrait of Mohammad Amin Ansari" />
           </div>
         </section>
 
+        <!-- RESEARCH -->
         <section id="research" class="section">
           <h2>Research Interests</h2>
-          <p>I’m interested in applicable AI—designing and deploying machine learning, deep learning, and generative models that solve real-world problems across domains such as healthcare, communications, and intelligent systems. I enjoy end-to-end work: data curation, representation learning, model building, and efficient implementation, with an eye on robustness, interpretability, and impact. Drawing on foundations that span neuroscience, communication systems, and computer architecture, I’m eager to begin a PhD and develop practical AI methods that translate from ideas to usable solutions.</p>
-      </section>
+          <p>
+            I’m interested in applicable AI—designing and deploying machine learning, deep learning, and generative models
+            that solve real-world problems across domains such as healthcare, communications, and intelligent systems.
+            I enjoy end-to-end work: data curation, representation learning, model building, and efficient implementation,
+            with an eye on robustness, interpretability, and impact. Drawing on foundations that span neuroscience,
+            communication systems, and computer architecture, I’m eager to begin a PhD and develop practical AI methods
+            that translate from ideas to usable solutions.
+          </p>
+        </section>
 
-        <!--section id="publications" class="section">
-          <div>
-            <div class="kicker">RESEARCH</div>
-            <h2>Publications</h2>
-          </div>
-          <div class="card">
-            <ol class="list">
-              <li>
-                <strong>Your Paper Title</strong> (2024). <em>Journal</em>.
-                <a href="/papers/your-paper.pdf">PDF</a> ·
-                <a href="https://github.com/USERNAME/REPO">Code</a>
-              </li>
-              <li>
-                <strong>Another Title</strong> (2023). <em>Conference</em>.
-                <a href="#">PDF</a>
-              </li>
-            </ol>
-          </div>
-      </section-->
-
+        <!-- PROJECTS -->
         <section id="projects" class="section">
           <div>
             <div class="kicker">RECENT</div>
@@ -179,18 +186,29 @@
           </div>
           <div class="grid-2">
             <div class="card">
-              <h3>EEG Artifact Toolkit</h3>
-              <p>Robust artifact removal for clinical EEG pipelines.</p>
-              <p><a href="https://github.com/USERNAME/REPO">Repository</a></p>
+              <h3>Generative Models for Biomedical Signals</h3>
+              <p>Trained and evaluated deep generative architectures for realistic data synthesis and augmentation; improved downstream classifiers under data scarcity.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_GEN">Repository</a></p>
             </div>
             <div class="card">
-              <h3>Sleep Staging Models</h3>
-              <p>Lightweight deep learning models for polysomnography.</p>
-              <p><a href="https://github.com/USERNAME/REPO2">Repository</a></p>
+              <h3>Sleep Staging with Deep Learning</h3>
+              <p>End-to-end pipeline from preprocessing to deployment; benchmarking representation learning and transfer learning setups.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_SLEEP">Repository</a></p>
+            </div>
+            <div class="card">
+              <h3>FPGA-Accelerated Signal Processing</h3>
+              <p>Designed hardware-aware DSP kernels and data paths; compared CPU/GPU/FPGA trade-offs for throughput and latency.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_FPGA">Repository</a></p>
+            </div>
+            <div class="card">
+              <h3>OCR Pipeline (Multi-language)</h3>
+              <p>Hybrid classical + deep learning OCR with document cleanup, segmentation, and sequence modeling for practical deployment.</p>
+              <p><a href="https://github.com/USERNAME/PROJECT_OCR">Repository</a></p>
             </div>
           </div>
         </section>
 
+        <!-- TEACHING -->
         <section id="teaching" class="section">
           <div>
             <div class="kicker">ACADEMIA</div>
@@ -198,12 +216,13 @@
           </div>
           <div class="card">
             <ul class="list">
-              <li>ML for Biomedical Engineering (2024–)</li>
-              <li>Intro to Python (2022–)</li>
+              <li>ML for Biomedical Engineering (TA)</li>
+              <li>Intro to Python (TA)</li>
             </ul>
           </div>
         </section>
 
+        <!-- CONTACT -->
         <section id="contact" class="section">
           <div>
             <div class="kicker">GET IN TOUCH</div>
